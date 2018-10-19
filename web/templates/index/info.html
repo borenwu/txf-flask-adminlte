@@ -1,0 +1,51 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+    <div class="wrapper wrapper-content">
+        <div class="row">
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>订单总量</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{ sum_quantity }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered m-t">
+                    <thead>
+                    <tr>
+                        <th>社区</th>
+                        <th>购买量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if stat_list %}
+                        {% for item in stat_list %}
+                            <tr>
+                                <td>{{ item.community_name }}</td>
+                                <td>{{ item.quantity }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5">暂无数据~~</td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            {#                <div class="col-lg-12" id="member_order" style="height: 400px;border: 1px solid #e6e6e6;padding-top: 20px;">#}
+            {#                    使用highchart画图#}
+            {#                </div>#}
+            {#                <div class="col-lg-12" id="finance" style="height: 400px;border: 1px solid #e6e6e6;padding-top: 20px;">#}
+            {#                    使用highchart画图#}
+            {#                </div>#}
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{{ buildStaticUrl('/js/index/info.js') }}"></script>
+{% endblock %}

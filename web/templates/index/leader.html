@@ -1,0 +1,118 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">本月营收统计</span>
+                        <h5>本月营收概况</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <small>本月销售额：{{ sum_sale_month }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">本月销量统计</span>
+                        <h5>本月销量概况</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <small>本月销量：{{ sum_quantity_month }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">本月提成统计</span>
+                        <h5>本月提成概况</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <small>本月提成：{{ sum_benefit_month }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">今日营收统计</span>
+                        <h5>今日营收概况</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <small>今日销售额：{{ sum_sale_today }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">今日销量统计</span>
+                        <h5>今日销量概况</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <small>今日今日销量：{{ sum_quantity_today }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">今日提成统计</span>
+                        <h5>今日提成概况</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <small>今日提成：{{ sum_benefit_today }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered m-t">
+                    <thead>
+                    <tr>
+                        <th>商品名</th>
+                        <th>开团时间</th>
+                        <th>结束时间</th>
+                        <th>单价</th>
+                        <th>提成比例</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if stat_list %}
+                        {% for item in stat_list %}
+                            <tr>
+                                <td>{{ item.food_name }}</td>
+                                <td>{{ item.date_from }}</td>
+                                <td>{{ item.date_to }}</td>
+                                <td>{{ item.price }}</td>
+                                <td>{{ item.ratio }}</td>
+                                <td>
+                                    <a href="{{ buildUrl('/leader-food-info' ) }}?id={{ item.food_id }}">
+                                        <i class="fa fa-eye fa-lg"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5">暂无数据~~</td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{{ buildStaticUrl('/plugins/highcharts/highcharts.js') }}"></script>
+    <script src="{{ buildStaticUrl('/js/chart.js') }}"></script>
+    <script src="{{ buildStaticUrl('/js/index/index.js') }}"></script>
+{% endblock %}

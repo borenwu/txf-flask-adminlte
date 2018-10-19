@@ -1,0 +1,124 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            超级管理员仪表板
+            <small>最新的统计信息</small>
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+        <!--------------------------
+          | Your Page Content Here |
+          -------------------------->
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">近期正在开团的商品，截单之后3天内，总后台仍然可见，但顾客在截单之后就看不到商品了，方便总后台统计发货</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>商品名</th>
+                                <th>库存量</th>
+                                <th>开团日期</th>
+                                <th>结束日期</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if food_list_opening %}
+                                {% for item in food_list_opening %}
+                                    <tr>
+                                        <td>{{ item.name }}</td>
+                                        <td>{{ item.stock }}</td>
+                                        <td>{{ item.date_from }}</td>
+                                        <td>{{ item.date_to }}</td>
+                                        <td>
+                                            <a href="{{ buildUrl('/food-info' ) }}?id={{ item.id }}">
+                                                <i class="fa fa-eye fa-lg"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">暂无数据~~</td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+
+            {#            <div class="col-lg-4">#}
+            {#                <div class="ibox float-e-margins">#}
+            {#                    <div class="ibox-title">#}
+            {#                        <span class="label label-primary pull-right">日统计</span>#}
+            {#                        <h5>营收概况</h5>#}
+            {#                    </div>#}
+            {#                    <div class="ibox-content">#}
+            {#                        <h1 class="no-margins">{{ data.finance.today }}</h1>#}
+            {#                        <small>近30日：{{ data.finance.month }}</small>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div class="col-lg-4">#}
+            {#                <div class="ibox float-e-margins">#}
+            {#                    <div class="ibox-title">#}
+            {#                        <span class="label label-primary pull-right">日统计</span>#}
+            {#                        <h5>订单</h5>#}
+            {#                    </div>#}
+            {#                    <div class="ibox-content">#}
+            {#                        <h1 class="no-margins">{{ data.order.today }}</h1>#}
+            {#                        <small>近30日：{{ data.order.today }}</small>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div class="col-lg-4">#}
+            {#                <div class="ibox float-e-margins">#}
+            {#                    <div class="ibox-title">#}
+            {#                        <span class="label label-primary pull-right">日统计</span>#}
+            {#                        <h5>会员</h5>#}
+            {#                    </div>#}
+            {#                    <div class="ibox-content">#}
+            {#                        <h1 class="no-margins">{{ data.member.total }}</h1>#}
+            {#                        <small>今日新增：{{ data.member.today_new }}</small>#}
+            {#                        <small>近30日新增：{{ data.member.month_new }}</small>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#                <div class="col-lg-3">#}
+            {#                    <div class="ibox float-e-margins">#}
+            {#                        <div class="ibox-title">#}
+            {#                            <span class="label label-primary pull-right">日统计</span>#}
+            {#                            <h5>分享</h5>#}
+            {#                        </div>#}
+            {#                        <div class="ibox-content">#}
+            {#                            <h1 class="no-margins">{{ data.shared.today }}</h1>#}
+            {#                            <small>近30日：{{ data.shared.month }}</small>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+        </div>
+
+
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+{% block js %}
+    <script src="{{ buildStaticUrl('/plugins/highcharts/highcharts.js') }}"></script>
+    <script src="{{ buildStaticUrl('/js/chart.js') }}"></script>
+    <script src="{{ buildStaticUrl('/js/index/index.js') }}"></script>
+{% endblock %}

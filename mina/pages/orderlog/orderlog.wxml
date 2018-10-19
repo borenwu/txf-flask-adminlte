@@ -1,0 +1,19 @@
+<!--pages/orderlog/orderlog.wxml-->
+<!-- <text>pages/orderlog/orderlog.wxml</text> -->
+
+<block wx:for="{{orders}}" wx:for-index="index" wx:for-item="item">
+    <view class="wa-item wa-item-thumbnail-left">
+        <text class="icon-right ion-chevron-right"></text>
+        <image class="item-img" src="{{item.avatar}}"></image>
+        <text>{{item.nickname}}</text>
+        <view>
+            <text>{{item.updated_time}}</text>
+        </view>
+        <view>
+            <text>{{item.food_name}}</text>
+        </view>
+        <view>
+            <text>+ {{item.quantity}}</text>
+        </view>
+    </view>
+</block>

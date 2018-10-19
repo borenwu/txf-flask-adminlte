@@ -1,0 +1,50 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+    <div class="wrapper wrapper-content">
+        <div class="row">
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>社区转化率统计</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{ community_name }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered m-t">
+                    <thead>
+                    <tr>
+                        <th>开团商品</th>
+                        <th>订单量</th>
+                        <th>社区人数</th>
+                        <th>转化率</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if list %}
+                        {% for item in list %}
+                            <tr>
+                                <td>{{ item.food_name }}</td>
+                                <td>{{ item.order_count }}</td>
+                                <td>{{ item.member_count }}</td>
+                                <td>{{ item.ratio }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5">暂无数据~~</td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{{ buildStaticUrl('/js/index/info.js') }}"></script>
+{% endblock %}

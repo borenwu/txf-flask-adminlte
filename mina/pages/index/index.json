@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": " ",
+    "enablePullDownRefresh": false,
+    "disableScroll": true,
+    "usingComponents": {
+        "i-icon": "../../dist/icon/index",
+        "i-modal": "../../dist/modal/index"
+        
+    }
+}

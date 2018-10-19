@@ -1,0 +1,9 @@
+flask
+flask-sqlalchemy
+flask-debugtoolbar
+mysqlclient
+flask_script
+requests
+uwsgi
+qiniu
+flask-qiniustorage

@@ -1,0 +1,79 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">营收统计</span>
+                        <h5>营收概况</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <small>该商品累积到现在的销售额：{{ sum_sale }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">销量统计</span>
+                        <h5>销量概况</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <small>该商品累积到现在的销量：{{ sum_quantity }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">提成统计</span>
+                        <h5>提成概况</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <small>该商品累积到现在的提成：{{ sum_benefit }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered m-t">
+                    <thead>
+                    <tr>
+                        <th>商品名</th>
+                        <th>创建时间</th>
+                        <th>订单量</th>
+                        <th>买家昵称</th>
+                        <th>手机</th>
+                        <th>地址</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if order_list %}
+                        {% for item in order_list %}
+                            <tr>
+                                <td>{{ item.food_name }}</td>
+                                <td>{{ item.created_time }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>{{ item.nickname }}</td>
+                                <td>{{ item.mobile }}</td>
+                                <td>{{ item.address }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5">暂无数据~~</td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{{ buildStaticUrl('/plugins/highcharts/highcharts.js') }}"></script>
+    <script src="{{ buildStaticUrl('/js/chart.js') }}"></script>
+    <script src="{{ buildStaticUrl('/js/index/index.js') }}"></script>
+{% endblock %}
