@@ -60,6 +60,12 @@ APP = {
     'domain': 'https://ntboao.net'
 }
 
+APPLICATION_STATUS_MAPPING = {
+    "1": "审核通过",
+    "0": "待审核"
+}
+
+
 PAY_STATUS_MAPPING = {
     "1": "已支付",
     "-8": "待支付",

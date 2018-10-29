@@ -1,75 +1,89 @@
 {% extends "common/layout_main.html" %}
 {% block content %}
-    {% include "common/tab_account.html" %}
-    <div class="row m-t  wrap_account_set">
-        <div class="col-lg-12">
-            <h2 class="text-center">社区设置</h2>
-            <div class="form-horizontal m-t m-b">
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">名称:</label>
-                    <div class="col-lg-10">
-                        <input type="text" name="name" class="form-control" placeholder="请输入名称~~"
-                               value="{{ info.name }}">
-                    </div>
-                </div>
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">省份:</label>
-                    <div class="col-lg-10">
-                        <input type="text" name="province" class="form-control" placeholder="请输入省份~~"
-                               value="{{ info.province }}">
-                    </div>
-                </div>
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">城市:</label>
-                    <div class="col-lg-10">
-                        <input type="text" name="city" class="form-control" placeholder="请输入城市~~"
-                               value="{{ info.city }}">
-                    </div>
-                </div>
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">简介:</label>
-                    <div class="col-lg-10">
-                        <input type="text" name="description" class="form-control" placeholder="请输入简介~~"
-                               value="{{ info.description }}">
-                    </div>
-                </div>
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">自提点:</label>
-                    <div class="col-lg-10">
-                        <input type="text" name="pickups" class="form-control" placeholder="请输入自提点~~"
-                               value="{{ info.pickups }}">
-                    </div>
-                </div>
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <div class="col-lg-4 col-lg-offset-2">
-                        <input type="hidden" name="id" value="{{ info.id }}">
-                        <button class="btn btn-w-m btn-outline btn-primary save">保存</button>
-                    </div>
-                </div>
+    <section class="content-header">
+        <h1>
+            社区管理
+            <small>添加一个新的社区</small>
+        </h1>
+    </section>
 
-                <div class="form-group">
-                    <label class="col-lg-2 control-label hide">平台ID:</label>
-                    <div class="col-lg-10">
-                        <input id="platform_id" type="text" name="platform_id" class="form-control hide"
-                               value="{{ current_user.platform_id }}">
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">填写新社区信息</h3>
                     </div>
-                </div>
+                    <div class="box-body wrap_account_set">
+                        <div class="form-horizontal m-t m-b">
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">名称:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="name" class="form-control" placeholder="请输入名称~~"
+                                           value="{{ info.name }}">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">省份:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="province" class="form-control" placeholder="请输入省份~~"
+                                           value="{{ info.province }}">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">城市:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="city" class="form-control" placeholder="请输入城市~~"
+                                           value="{{ info.city }}">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">简介:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="description" class="form-control" placeholder="请输入简介~~"
+                                           value="{{ info.description }}">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">自提点:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="pickups" class="form-control" placeholder="请输入自提点~~"
+                                           value="{{ info.pickups }}">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <input type="hidden" name="id" value="{{ info.id }}">
+                                    <button class="btn btn-primary save">保存</button>
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    <label class="col-lg-2 control-label hide">平台名称:</label>
-                    <div class="col-lg-10">
-                        <input id="platform_name" type="text" name="platform_name" class="form-control hide"
-                               value="{{ current_user.platform_name }}">
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label hide">平台ID:</label>
+                                <div class="col-lg-10">
+                                    <input id="platform_id" type="text" name="platform_id" class="form-control hide"
+                                           value="{{ current_user.platform_id }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label hide">平台名称:</label>
+                                <div class="col-lg-10">
+                                    <input id="platform_name" type="text" name="platform_name" class="form-control hide"
+                                           value="{{ current_user.platform_name }}">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock %}
 {% block js %}
     <script src="{{ buildStaticUrl('/js/community/set.js') }}"></script>

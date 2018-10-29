@@ -1,0 +1,17 @@
+<div class="row  border-bottom">
+    <div class="col-lg-12">
+        <div class="tab_title">
+            <ul class="nav nav-pills">
+                <li {% if current == "group" %} class="current" {% endif %}>
+                    <a href="{{ buildUrl('/application/group_application') }}">申请加入微信群</a>
+                </li>
+                <li {% if current == "leader" %} class="current" {% endif %}>
+                    <a href="{{ buildUrl('/application/leader_application') }}">申请成为团长</a>
+                </li>
+                <li {% if current == "community" %} class="current" {% endif %}>
+                    <a href="{{ buildUrl('/application/community_application') }}">申请变更社区</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

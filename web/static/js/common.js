@@ -115,6 +115,10 @@ var common_ops = {
             nav_name = "stat";
         }
 
+        if (pathname.indexOf("/application") > -1) {
+            nav_name = "application";
+        }
+
         if (nav_name == null) {
             return;
         }

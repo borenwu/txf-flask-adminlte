@@ -1,0 +1,145 @@
+{% extends "common/layout_main.html" %}
+{% block content %}
+    <div class="row m-t">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="m-b-md">
+                        <h2>账户信息</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 text-center">
+                    <img class="img-circle circle-border" src="{{ buildStaticUrl('/images/common/avatar.png') }}"
+                         width="100px" height="100px">
+                </div>
+                <div class="col-lg-10">
+                    <p>姓名：{{ info.name }}</p>
+                    <p id="member_id">用户数据库ID：{{ info.member_id }}</p>
+                    <p>手机：{{ info.mobile }}</p>
+                    <p>微信号：{{ info.wechat }}</p>
+                    <p>申请社区：{{ info.community_name }}</p>
+                    <p>审核状态：{% if  info.status==0 %}待审核{% else %}审核完成{% endif %}</p>
+                </div>
+            </div>
+            <div class="row m-t">
+                <div class="col-lg-12">
+                    <div class="container">
+                        <p>审核通过将会自动化连续进行3个操作：</p>
+                        <ul>
+                            <li>创建一个空白社区</li>
+                            <li>创建初始化一个团长账号</li>
+                            <li>将团长的微信用户信息移动到社区</li>
+                        </ul>
+
+                    </div>
+                    <div class="container wrap_account_set">
+                        <div class="col-lg-12">
+                            <h2 class="text-center">账号设置</h2>
+                            <div class="form-horizontal m-t m-b">
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <input type="text" name="id" class="form-control hide" placeholder="请输入省份~~"
+                                        value="{{ info.id }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <input type="text" name="member_id" class="form-control hide" placeholder="请输入省份~~"
+                                        value="{{ info.member_id }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">省份:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="province" class="form-control" placeholder="请输入省份~~"
+                                        value="江苏省">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">城市:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="city" class="form-control" placeholder="请输入城市~~">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">社区名:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="community_name" class="form-control" placeholder="请输入社区名~~"
+                                        value="{{ info.community_name }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">自提点:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="pickups" class="form-control" placeholder="请输入自提点~~">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">简介:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="description" class="form-control" placeholder="请输入简介~~">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">姓名:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="name" class="form-control" placeholder="请输入姓名~~"
+                                        value="{{ info.name }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">手机:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="mobile" class="form-control" placeholder="请输入手机~~"
+                                        value="{{ info.mobile }}">
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">登录名:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="login_name" class="form-control" autocomplete="off"
+                                               placeholder="请输入登录名~~">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">登录密码:</label>
+                                    <div class="col-lg-10">
+                                        <input type="password" name="login_pwd" class="form-control" autocomplete="off"
+                                               placeholder="请输入登录密码~~">
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <div class="col-lg-4 col-lg-offset-2">
+                                        <button class="btn btn-w-m btn-outline btn-primary save">审核通过</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block js %}
+    <script src="{{ buildStaticUrl('/plugins/wiszard/jquery.bootstrap.wizard.min.js') }}"></script>
+    <script src="{{ buildStaticUrl('/js/application/leader_application_info.js') }}"></script>
+{% endblock %}
