@@ -4,17 +4,20 @@ var upload = {
         common_ops.alert(msg);
     },
     success: function (file_key) {
+        console.log("success")
+        console.log(file_key)
         if (!file_key) {
             return;
         }
         var html = '<img src="' + file_key + '"/>'
             + '<span class="fa fa-times-circle del del_image" data="' + file_key + '"></span>';
+        $(".upload_pic_wrap").append('<span class="pic-each">' + html + '</span>');
 
-        if ($(".upload_pic_wrap .pic-each").size() > 0) {
-            $(".upload_pic_wrap .pic-each").html(html);
-        } else {
-            $(".upload_pic_wrap").append('<span class="pic-each">' + html + '</span>');
-        }
+        // if ($(".upload_pic_wrap .pic-each").size() > 0) {
+        //     $(".upload_pic_wrap .pic-each").html(html);
+        // } else {
+        //     $(".upload_pic_wrap").append('<span class="pic-each">' + html + '</span>');
+        // }
         food_set_ops.delete_img();
     }
 };
